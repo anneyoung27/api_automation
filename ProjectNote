@@ -1,0 +1,10 @@
+Pre-condition --> given() = content type, set cookies, add auth, add param, set headers info, etc...
+Actions / Steps --> when() = GET, POST, PUT, DELETE
+Validation --> then() = validate status code, extract response, extract headers cookies & response body
+
+Validations :
+1. Status code
+2. Response body
+3. Response time
+4. Content-type
+5. Response string
