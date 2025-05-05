@@ -34,8 +34,11 @@ public class HTTPMethodTest {
     @Test(priority = 2)
     public void getListOfObjectsByIds(){
         given()
+                .queryParam("id", 3)
+                .queryParam("id", 5)
+                .queryParam("id", 10)
                 .when()
-                .get("/objects?id=3&id=5&id=10")
+                .get("/objects") // https://api.restful-api.dev/objects?id=3&id=5&id=10
                 .then()
                 .statusCode(200)
                 .header("Content-Type", equalTo("application/json"))
@@ -43,6 +46,18 @@ public class HTTPMethodTest {
     }
 
     @Test(priority = 3)
+    public void getSingleObject(){
+        given()
+                .pathParam("id", 7)
+                .when()
+                .get("/objects?{id}")
+                .then()
+                .statusCode(200)
+                .header("Content-Type", equalTo("application/json"))
+                .log().all();
+    }
+
+    @Test(priority = 4)
     public void addObject(){
         HashMap<String, Object> innerDataTest = new HashMap<>();
         innerDataTest.put("year", 2019);
@@ -70,7 +85,7 @@ public class HTTPMethodTest {
                 .extract().jsonPath().getString("id");
     }
 
-    @Test(priority = 4, dependsOnMethods = {"addObject"})
+    @Test(priority = 5, dependsOnMethods = {"addObject"})
     public void updateObject(){
         HashMap<String, Object> innerUpdateData= new HashMap<>();
         innerUpdateData.put("year", 2025);
@@ -100,7 +115,7 @@ public class HTTPMethodTest {
                 .extract().jsonPath().getString("id");
     }
 
-    @Test(priority = 5, dependsOnMethods = {"updateObject"})
+    @Test(priority = 6, dependsOnMethods = {"updateObject"})
     public void partiallyUpdateObject(){
         HashMap<String, Object> partialUpdateData = new HashMap<>();
         partialUpdateData.put("name", "Apple MacBook Pro M4 Max (Update Name)");
@@ -117,7 +132,7 @@ public class HTTPMethodTest {
                 .log().all();
     }
 
-    @Test(priority = 6, dependsOnMethods = {"partiallyUpdateObject"})
+    @Test(priority = 7, dependsOnMethods = {"partiallyUpdateObject"})
     public void deleteObject(){
         given()
                 .when()
