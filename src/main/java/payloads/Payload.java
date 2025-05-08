@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Payload {
     private static final Faker faker = new Faker();
-    private static final List<String> product_categories = Arrays.asList("Electronics", "Furniture", "Clothing", "Books", "Beauty");
+    private static final List<String> product_categories = Arrays.asList("electronics", "jewelry", "men's clothing", "women's clothing");
 
     // Product
     public static Product productPayload(){
