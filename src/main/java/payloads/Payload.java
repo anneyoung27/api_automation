@@ -1,9 +1,11 @@
 package payloads;
 
 import com.github.javafaker.Faker;
+import pojo.Cart;
 import pojo.Product;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Payload {
@@ -20,6 +22,14 @@ public class Payload {
 
         return new Product(name, price, description, imageUrl, category);
     }
+
+    // Cart
+//    public static Cart cartPayload(){
+//        String userId;
+//        Date date;
+//
+//
+//    }
 
     public static int getRandomNumber(int min, int max){
         return faker.number().numberBetween(min, max);
