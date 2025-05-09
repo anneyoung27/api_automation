@@ -2,6 +2,7 @@ package base;
 
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
+import pojo.Login;
 import routes.Routes;
 
 import java.util.List;
@@ -43,5 +44,9 @@ public class TestBase {
             }
         }
         return true;
+    }
+
+    public Login userLogin(String userName, String password){
+        return new Login(userName, password);
     }
 }
