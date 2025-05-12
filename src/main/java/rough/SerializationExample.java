@@ -127,7 +127,6 @@ class Location {
 public class SerializationExample {
     public static void main(String[] args) {
         AddPlace addPlace = new AddPlace();
-
         addPlace.setAccuracy(50);
         addPlace.setName("Frontline house");
         addPlace.setPhone_number("(+62)8112233445");

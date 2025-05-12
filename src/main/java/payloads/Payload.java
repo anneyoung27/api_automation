@@ -3,9 +3,12 @@ package payloads;
 import com.github.javafaker.Faker;
 import pojo.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class Payload {
     private static final Faker faker = new Faker();
@@ -65,13 +68,25 @@ public class Payload {
         return new User(address, user.getEmail(), user.getUserName(), user.getPassword(), name, user.getPhone(), user.get__v());
     }
 
-    // Cart
-//    public static Cart cartPayload(){
-//        String userId;
-//        Date date;
-//
-//
-//    }
+    public static Cart cartPayload() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date startDate = sdf.parse("2025-01-01T00:00:00.000Z");
+        Date endDate = sdf.parse("2025-12-31T00:00:00.000Z");
+
+        int userId = faker.number().numberBetween(1, 20);
+        Date date = faker.date().between(startDate, endDate);
+        int productId = faker.number().numberBetween(1, 20);
+        int quantity = faker.number().numberBetween(1, 50);
+
+        ProductDetail productDetail = new ProductDetail();
+        productDetail.setProductId(productId);
+        productDetail.setQuantity(quantity);
+
+        return new Cart(userId, date, productDetail.getProductId(), productDetail.getQuantity());
+
+
+    }
 
 
     // Login
