@@ -78,14 +78,19 @@ public class Payload {
         Date date = faker.date().between(startDate, endDate);
         int productId = faker.number().numberBetween(1, 20);
         int quantity = faker.number().numberBetween(1, 50);
+        int __v = faker.number().numberBetween(1, 10);
 
         ProductDetail productDetail = new ProductDetail();
         productDetail.setProductId(productId);
         productDetail.setQuantity(quantity);
 
-        return new Cart(userId, date, productDetail.getProductId(), productDetail.getQuantity());
+        Cart cart = new Cart();
+        cart.setUserId(userId);
+        cart.setDate(date);
+        cart.setProductDetail(productDetail);
+        cart.set__v(__v);
 
-
+        return new Cart(cart.getUserId(), cart.getDate(), productDetail, cart.get__v());
     }
 
 

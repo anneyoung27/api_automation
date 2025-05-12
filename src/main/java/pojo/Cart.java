@@ -6,10 +6,14 @@ import java.util.List;
 public class Cart {
     private int userId;
     private Date date;
-    private List<ProductDetail> productDetail;
+    private ProductDetail productDetail;
     private int __v;
 
-    public Cart(int userId, Date date, List<ProductDetail> productDetail, int __v) {
+    public Cart(){
+
+    }
+
+    public Cart(int userId, Date date, ProductDetail productDetail, int __v) {
         this.userId = userId;
         this.date = date;
         this.__v = __v;
@@ -32,11 +36,11 @@ public class Cart {
         this.__v = __v;
     }
 
-    public List<ProductDetail> getProductDetail() {
+    public ProductDetail getProductDetail() {
         return productDetail;
     }
 
-    public void setProductDetail(List<ProductDetail> productDetail) {
+    public void setProductDetail(ProductDetail productDetail) {
         this.productDetail = productDetail;
     }
 
