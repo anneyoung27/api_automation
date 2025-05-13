@@ -3,12 +3,12 @@ package testcases.CartTest;
 import base.TestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import payloads.Payload;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -122,10 +122,22 @@ public class CartTest extends TestBase {
 
     @Test(priority = 9, dependsOnMethods = {"addToCartTest"})
     public void partialUpdateCartTest(){
+        HashMap<String, Object> partialUpdate = new HashMap<>();
+        partialUpdate.put("quantity", 100);
+        partialUpdate.put("productId", 3);
 
+        given()
+                .pathParam("id", cartId)
+                .contentType(ContentType.JSON)
+                .body(partialUpdate)
+                .when()
+                .patch(UPDATE_CART)
+                .then()
+                .statusCode(200)
+                .log().body();
     }
 
-    @Test(priority = 10, dependsOnMethods = {"addToCartTest", "updateCartTest"})
+    @Test(priority = 10, dependsOnMethods = {"addToCartTest", "partialUpdateCartTest", "updateCartTest"})
     public void deleteCartTest(){
         given()
                 .pathParam("id", cartId)
