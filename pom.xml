@@ -24,6 +24,7 @@
         <jackson.databind.ver>2.19.0</jackson.databind.ver>
         <allure.testng.ver>2.29.1</allure.testng.ver>
         <extent.ver>5.1.2</extent.ver>
+        <json.path.ver>2.9.0</json.path.ver>
     </properties>
 
     <dependencies>
@@ -109,6 +110,13 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extent.ver}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${json.path.ver}</version>
         </dependency>
 
     </dependencies>
