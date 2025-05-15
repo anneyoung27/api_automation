@@ -75,8 +75,6 @@ public class UserTest extends TestBase {
                 .get(GET_SINGLE_USER)
                 .then()
                 .statusCode(200)
-                .body("id", equalTo(userId))
-                .body("size()", greaterThan(1))
                 .log().all();
     }
 

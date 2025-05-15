@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API Test Scenario">
+    
+    <listeners>
+        <listener class-name="utils.ExtentReporter"/>
+    </listeners>
+
+    <test name="Test" thread-count="5">
+        <classes>
+            <class name="testcases.usertest.UserTest"/>
+            <class name="testcases.producttest.ProductTest"/>
+            <class name="testcases.carttest.CartTest"/>
+        </classes>
+    </test>
+</suite>

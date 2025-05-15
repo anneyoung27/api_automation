@@ -1,5 +1,12 @@
 package pojo;
 
+/* REQUEST BODY:
+    {
+        "username": "string",
+        "password": "string"
+    }
+ */
+
 public class Login {
     private String username;
     private String password;
