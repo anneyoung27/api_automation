@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name=" API Test">
+<suite name="API Test Scenario" thread-count="2" parallel="tests">
 
     <listeners>
         <listener class-name="utils.ExtentReporter"/>
     </listeners>
 
-    <test name="Data Driven Test" thread-count="2">
+    <test name="Data Driven Test">
         <classes>
             <class name="ddt.ProductDataDrivenWithCSVTest"/>
             <class name="ddt.ProductDataDrivenWithJSONTest"/>

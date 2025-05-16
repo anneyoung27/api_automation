@@ -8,10 +8,13 @@ import org.testng.annotations.Test;
 import payloads.Payload;
 
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static routes.Routes.*;
 
@@ -41,7 +44,7 @@ public class CartTest extends TestBase {
     }
 
     @Test(priority = 3)
-    public void getLimitedCartItemTest(){
+    public void getLimitedCartItemTest() {
         given()
                 .when()
                 .pathParam("limit", 5)
@@ -53,9 +56,9 @@ public class CartTest extends TestBase {
     }
 
     @Test(priority = 4)
-    public void getSortedCartTest(){
+    public void getSortedCartTest() {
         Response response = given()
-                .pathParam("order", "desc" )
+                .pathParam("order", "desc")
                 .when()
                 .get(GET_CART_SORTED)
                 .then()
@@ -63,7 +66,7 @@ public class CartTest extends TestBase {
                 .extract().response();
 
         List<Integer> productId = response.jsonPath().getList("id", Integer.class);
-        Assert.assertTrue(isSortedDescending(productId), "In descending order");
+        assertThat(isSortedDescending(productId), is(true));
     }
 
     @Test(priority = 5)
@@ -71,7 +74,7 @@ public class CartTest extends TestBase {
         String startDate = getProperty("startDate");
         String endDate = getProperty("endDate");
 
-        given()
+        Response response = given()
                 .pathParam("start_date", startDate)
                 .pathParam("end_date", endDate)
                 .when()
@@ -80,11 +83,14 @@ public class CartTest extends TestBase {
                 .statusCode(200)
                 .body("size()", greaterThan(1))
                 .body("", is(not(empty())))
-                .log().body();
+                .extract().response();
+
+        List<String> cartDates = response.jsonPath().getList("date");
+        assertThat(validateCartDatesWithinRange(cartDates, startDate, endDate), is(true));
     }
 
     @Test(priority = 6)
-    public void getUserSpecificCartItemsTest(){
+    public void getUserSpecificCartItemsTest() {
         given()
                 .pathParam("user_id", getProperty("userId"))
                 .when()
@@ -121,7 +127,7 @@ public class CartTest extends TestBase {
     }
 
     @Test(priority = 9, dependsOnMethods = {"addToCartTest"})
-    public void partialUpdateCartTest(){
+    public void partialUpdateCartTest() {
         HashMap<String, Object> partialUpdate = new HashMap<>();
         partialUpdate.put("quantity", 100);
         partialUpdate.put("productId", 3);
@@ -138,7 +144,7 @@ public class CartTest extends TestBase {
     }
 
     @Test(priority = 10, dependsOnMethods = {"addToCartTest", "partialUpdateCartTest", "updateCartTest"})
-    public void deleteCartTest(){
+    public void deleteCartTest() {
         given()
                 .pathParam("id", cartId)
                 .when()

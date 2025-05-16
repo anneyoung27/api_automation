@@ -5,6 +5,8 @@ import org.testng.annotations.BeforeClass;
 import pojo.Login;
 import routes.Routes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Properties;
 
@@ -48,5 +50,20 @@ public class TestBase {
 
     public Login userLogin(String userName, String password){
         return new Login(userName, password);
+    }
+
+    public static boolean validateCartDatesWithinRange(List<String> cartDates, String startDate, String endDate) {
+        DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        LocalDate start_date = LocalDate.parse(startDate, FORMATTER);
+        LocalDate end_date = LocalDate.parse(endDate, FORMATTER);
+
+        for (String dateTime : cartDates) {
+            LocalDate cartDate = LocalDate.parse(dateTime.substring(0, 10), FORMATTER);
+            if (cartDate.isBefore(start_date) || cartDate.isAfter(end_date)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static routes.Routes.*;
 
@@ -60,7 +61,7 @@ public class ProductTest extends TestBase {
                 .extract().response();
 
         List<Integer> productId = response.jsonPath().getList("id", Integer.class);
-        Assert.assertTrue(isSortedDescending(productId), "In descending order");
+        assertThat(isSortedDescending(productId), is(true));
     }
 
     @Test(priority = 5)
@@ -79,7 +80,7 @@ public class ProductTest extends TestBase {
 
         Assert.assertNotNull(productIds, "Product ID list should not be null");
         Assert.assertEquals(productIds.size(), 5, "Product ID list should contain 5 elements");
-        Assert.assertTrue(isSortedDescending(productIds), "Product IDs are not in descending order");
+        assertThat(isSortedDescending(productIds), is(true));
     }
 
     @Test(priority = 6)
