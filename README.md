@@ -118,10 +118,8 @@ src/
    `git clone https://github.com/anneyoung27/cucumber_bdd.git`
 2. Navigate to the project directory:<br />
 3. Update configuration<br />
-   `Modify config/config.properties as needed.`
+   Modify `resources/config.properties as needed.`
 4. Install dependencies using Maven:<br />
    `mvn clean install`
-5. Run<br />
-   `src/test/java/runner/ParallelRunner.xml`
 
 
