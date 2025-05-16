@@ -94,8 +94,20 @@ src/
     - Support CRUD operations
     - Filter carts by date range
     - Enable sorting and limiting of results
-
-
+#### 2.3 User Module
+- API Endpoints:
+    - POST /auth/login: Log in to generate a token
+    - GET /users/{id}: Retrieve user details by ID
+    - GET /users: Retrieve all users
+    - POST /users: Add a new user
+    - PUT /users/{id}: Update a user
+    - PATCH /users/{id}: Partially update a user
+    - DELETE /users/{id}: Delete a user
+- Request Body: <br />
+![image](https://github.com/user-attachments/assets/31b4de33-3cd2-4ae7-bf38-6f7750cf3578)
+- Functional Requirements:<br />
+    - Support CRUD operations
+    - Authenticate users and return token
 
 ### 3. Project Pipeline
 ![Project Pipeline](https://github.com/user-attachments/assets/fea9fa4c-afb1-4947-b309-bfd5592960a2)
