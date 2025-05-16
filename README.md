@@ -110,6 +110,7 @@ src/
     - Authenticate users and return token
 
 ### 3. Project Pipeline
+![image](https://github.com/user-attachments/assets/be6edd2c-e707-4963-933d-c07ecd9f2710)
 
 
 
