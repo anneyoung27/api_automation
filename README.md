@@ -11,6 +11,7 @@ The purpose of this project is to implement what I have learned in api automatio
 - TestNG for test execution
 - Maven for dependency management
 - Parallel testing
+- API Chaining
 - Extent Report and Allure Report for test reporting
 - Helper class and utility
 
@@ -61,17 +62,40 @@ src/
 ### 2. Modules and Functionalities
 #### 2.1 Products Module
 - API Endpoints:
-    - GET/products: Retrieve all products
-    - GET/products/{id}: Retrieve a product by ID
-    - GET/products?limit=x: Retrieve a limited number of products
-    - GET/products?sort=asc|desc: Retrieve all product categories
-    - GET/products/category/{category}: Retrieve products by category
-    - POST/products: Add a new product
-    - PUT/products/{id}: Update an existing product
-    - PATCH/products/{id}: Partially update a product
-    - DELETE/products/{id}: Delete a product
+    - GET /products: Retrieve all products
+    - GET /products/{id}: Retrieve a product by ID
+    - GET /products?limit=x: Retrieve a limited number of products
+    - GET /products?sort=asc|desc: Retrieve all product categories
+    - GET /products/category/{category}: Retrieve products by category
+    - POST /products: Add a new product
+    - PUT /products/{id}: Update an existing product
+    - PATCH /products/{id}: Partially update a product
+    - DELETE /products/{id}: Delete a product
 - Request Body:<br />
 ![image](https://github.com/user-attachments/assets/2099dcad-d366-45af-ace0-f3288efd1b9d)
+- Functional Requirements:<br />
+    - Support CRUD operations
+    - Enable filtering by category, sorting, and limiting result
+#### 2.2 Cart Module
+- API Endpoints:
+    - GET /carts: Retrieve all cart items
+    - GET /carts/{id}: Retrieve a cart by ID
+    - GET /carts?limit=x: Retrieve a limited number of carts
+    - GET /carts?sort=asc|desc: Retrieve carts in a specific order
+    - GET /carts?startDate=YYYY-MM-dd&endDate=YYYY-MM-dd: Retrieve carts in a date range
+    - GET /carts/users/{userID}: Retrieve carts by user id
+    - POST /carts: Add a new cart
+    - PUT /carts/{id}: Update a cart
+    - PATCH /carts/{id}: Partially update a cart
+    - DELETE /carts/{id}: Delete a cart
+- Request Body:<br />
+![image](https://github.com/user-attachments/assets/24631966-e413-4c9f-a122-cdcb39e6c867)
+- Functional Requirements:<br />
+    - Support CRUD operations
+    - Filter carts by date range
+    - Enable sorting and limiting of results
+
+
 
 ### 3. Project Pipeline
 ![Project Pipeline](https://github.com/user-attachments/assets/fea9fa4c-afb1-4947-b309-bfd5592960a2)
