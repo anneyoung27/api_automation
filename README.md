@@ -70,8 +70,8 @@ src/
     - PUT/products/{id}: Update an existing product
     - PATCH/products/{id}: Partially update a product
     - DELETE/products/{id}: Delete a product
-- Request Body:
-  [image](https://github.com/user-attachments/assets/2099dcad-d366-45af-ace0-f3288efd1b9d)
+- Request Body:<br />
+![image](https://github.com/user-attachments/assets/2099dcad-d366-45af-ace0-f3288efd1b9d)
 
 ### 3. Project Pipeline
 ![Project Pipeline](https://github.com/user-attachments/assets/fea9fa4c-afb1-4947-b309-bfd5592960a2)
